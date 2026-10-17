@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  churchmix-api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: churchmix-core
+    restart: unless-stopped
+    network_mode: "host" # Yêu cầu host networking để UDP OSC broadcast hoạt động với Behringer X32
+    ports:
+      - "8080:8080"
+      - "10023:10023/udp"
+    volumes:
+      - ../data:/app/data
+      - ../configs:/app/configs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - READ_ONLY_MODE=true
+      - X32_HOST=127.0.0.1
+      - X32_PORT=10023
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/api/v1/status"]
+      interval: 10s
+      timeout: 3s
+      retries: 3

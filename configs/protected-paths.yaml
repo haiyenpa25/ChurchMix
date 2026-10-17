@@ -1,0 +1,31 @@
+# Danh sách các OSC paths được bảo vệ nghiêm ngặt (Protected / Deny-list)
+# Bất kỳ lệnh ghi (write) nào vào các đường dẫn này đều bị Safety Gate chặn 100%
+
+protected_routing_paths:
+  - "/config/routing/*"
+  - "/outputs/aes50/*"
+  - "/outputs/p16/*"
+  - "/outputs/main/*"
+  - "/outputs/matrix/*"
+
+# Hard Invariant: Talkback DL16 #11 tuyệt đối không có đường ra FOH
+dl16_talkback_invariants:
+  channel_id: 11
+  physical_source: "AES50A_IN_11"
+  allowed_destinations:
+    - "ULTRANET_P16_11"
+  prohibited_destinations:
+    - "/ch/11/mix/lr"
+    - "/ch/11/mix/01..16" # Unless verified as monitor aux
+    - "/main/st/*"
+    - "/matrix/*"
+
+# Các tham số cấm chỉnh sửa trong giờ lễ
+denied_live_parameters:
+  - "/config/chlink/*"
+  - "/config/buslink/*"
+  - "/config/user/*"
+  - "/headamp/*" # Không tự ý đổi gain preamp phần cứng khi đang live
+  - "*/48v"      # Cấm tự đổi nguồn ảo Phantom 48V
+  - "/main/st/mix/on" # Cấm Mute Main FOH
+  - "/-action/goscene" # Cấm Scene recall tự động

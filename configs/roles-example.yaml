@@ -1,0 +1,74 @@
+# ChurchMix Role-Based Access Control (RBAC) Configuration
+# Governs user privileges, OSC mutation authority, and safety gate clearances.
+
+roles:
+  viewer:
+    description: "Khách / Thành viên ban hát theo dõi trực quan"
+    can_view_meters: true
+    can_view_spectrum: true
+    can_view_channels: true
+    can_view_audit_log: false
+    can_generate_proposals: false
+    can_approve_proposals: false
+    can_trigger_stop_auto: true   # Mọi người đều có quyền bấm dừng khẩn cấp
+    can_resume_auto: false
+    can_switch_hardware: false
+    can_export_scenes: false
+    can_modify_routing: false
+
+  sound_tech:
+    description: "Tình nguyện viên kỹ thuật âm thanh Chúa Nhật"
+    can_view_meters: true
+    can_view_spectrum: true
+    can_view_channels: true
+    can_view_audit_log: true
+    can_generate_proposals: true
+    can_approve_proposals: true   # Chỉ áp dụng các đề xuất HPF / PEQ đã được kiểm thử
+    allowed_mutation_scopes:
+      - "channel_eq"
+      - "channel_hpf"
+    max_fader_delta_db: 1.5
+    can_trigger_stop_auto: true
+    can_resume_auto: true
+    can_switch_hardware: false
+    can_export_scenes: true
+    can_modify_routing: false
+
+  sound_engineer:
+    description: "Kỹ sư âm thanh phụ trách hệ thống âm học"
+    can_view_meters: true
+    can_view_spectrum: true
+    can_view_channels: true
+    can_view_audit_log: true
+    can_generate_proposals: true
+    can_approve_proposals: true
+    allowed_mutation_scopes:
+      - "channel_eq"
+      - "channel_hpf"
+      - "channel_dynamics"
+      - "room_alignment_eq"
+      - "feedback_notch"
+    max_fader_delta_db: 3.0
+    can_trigger_stop_auto: true
+    can_resume_auto: true
+    can_switch_hardware: true
+    can_export_scenes: true
+    can_modify_routing: false   # Vẫn cấm đổi routing trực tiếp trong ca trực
+
+  church_admin:
+    description: "Trưởng ban kỹ thuật / Quản trị viên hệ thống"
+    can_view_meters: true
+    can_view_spectrum: true
+    can_view_channels: true
+    can_view_audit_log: true
+    can_generate_proposals: true
+    can_approve_proposals: true
+    allowed_mutation_scopes:
+      - "all"
+    can_trigger_stop_auto: true
+    can_resume_auto: true
+    can_switch_hardware: true
+    can_export_scenes: true
+    can_modify_routing: true    # Chỉ được phép trong quy trình bảo trì riêng biệt (Maintenance Workflow)
+    requires_hardware_readback: true
+    enforce_invariant_talkback: true # BẤT BIẾN KHÔNG THỂ BỊ VÔ HIỆU HÓA NGAY CẢ VỚI ADMIN!

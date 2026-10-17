@@ -1,12 +1,11 @@
 {
-  "name": "hainguyencoder",
+  "name": "churchmix",
   "version": "1.0.0",
-  "description": "Local web app that bootstraps new projects with professional Antigravity IDE configuration (AGENTS.md, rules, skills, hooks, project context, ports).",
+  "description": "ChurchMix X32 sound assistant and local monitoring dashboard.",
   "type": "module",
   "private": true,
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node tools/run-api.mjs",
     "test": "node --test \"tests/**/*.test.js\""
   },
   "engines": {
