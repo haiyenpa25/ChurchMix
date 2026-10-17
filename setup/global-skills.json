@@ -1,0 +1,16 @@
+{
+  "$comment": "Community skills copied into %USERPROFILE%\\.gemini\\config\\skills by setup.bat (global = available in every project). Existing folders with the same name are never overwritten. Edit this list to add/remove skills; paths are relative to HAINGUYENCODER.",
+  "skills": [
+    { "source": "community-skills/agent-skills/skills/interview-me", "why": "Phỏng vấn từng câu một để hiểu đúng yêu cầu (Addy Osmani)" },
+    { "source": "community-skills/agent-skills/skills/spec-driven-development", "why": "Viết spec trước khi code" },
+    { "source": "community-skills/agent-skills/skills/planning-and-task-breakdown", "why": "Chia việc lớn thành bước nhỏ kiểm chứng được" },
+    { "source": "community-skills/agent-skills/skills/debugging-and-error-recovery", "why": "Debug có phương pháp, không đoán mò" },
+    { "source": "community-skills/agent-skills/skills/code-simplification", "why": "Đơn giản hóa code mà không đổi hành vi" },
+    { "source": "community-skills/agent-skills/skills/security-and-hardening", "why": "Rà soát và gia cố bảo mật" },
+    { "source": "community-skills/agent-skills/skills/performance-optimization", "why": "Tối ưu hiệu năng dựa trên số đo" },
+    { "source": "community-skills/agent-skills/skills/browser-testing-with-devtools", "why": "Kiểm thử trên trình duyệt thật bằng Chrome DevTools MCP" },
+    { "source": "community-skills/agent-skills/skills/frontend-ui-engineering", "why": "Chuẩn kỹ thuật frontend production" },
+    { "source": "community-skills/taste-skill/skills/taste-skill", "why": "Gu thẩm mỹ UI, chống giao diện 'AI slop' (landing page, portfolio)" },
+    { "source": "community-skills/taste-skill/skills/redesign-skill", "why": "Nâng cấp giao diện dự án có sẵn" }
+  ]
+}

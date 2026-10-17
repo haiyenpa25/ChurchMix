@@ -1,0 +1,26 @@
+# Dependencies and generated output
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+
+# AG Kit temporary and backup data
+.temp_ag_kit/
+.ag-kit-backups/
+
+# Local editor / OS files
+.DS_Store
+*.py[cod]
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Project-local/private directories
+/ag-kit-doc/
+/tests/
+/others/
+/.claude/
+/demo/
